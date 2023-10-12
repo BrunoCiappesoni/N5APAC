@@ -1,10 +1,9 @@
 ﻿namespace PAC.BusinessLogic;
 
-using System.Collections.Generic;
-using System.Data;
 using IBusinessLogic;
 using PAC.Domain;
 using PAC.IDataAccess;
+using System.Collections.Generic;
 
 public class StudentLogic : IStudentLogic
 {
@@ -20,9 +19,19 @@ public class StudentLogic : IStudentLogic
         return _studentsRepository.GetStudentById(id);
     }
 
-    public IEnumerable<Student> GetStudents()
+    public IEnumerable<Student> GetStudents(int since, int until)
     {
-        return _studentsRepository.GetStudents();
+        List<Student> toReturn = new List<Student>();
+        IEnumerable<Student> studentsToFilter = _studentsRepository.GetStudents();
+        foreach (Student student in studentsToFilter)
+        {
+            if (student.Age >= since && student.Age <= until)
+            {
+                toReturn.Add(student);
+            }
+
+        }
+        return toReturn;
     }
 
     public void InsertStudents(Student? student)

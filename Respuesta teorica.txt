@@ -1,0 +1,6 @@
+Para la inyeccion de dependencias se creo la dependencia IStudentLogic utilizando la forma de registro AddScoped. 
+Esto significa que se crea una única instancia para cada solicitud en curso. 
+
+Existen otras dos opciones: AddSingleton crea una única instancia para toda la aplicación, y AddTransient genera una nueva instancia en cada solicitud. 
+
+La elección de AddScoped se basa en que se crea una instancia por cada vez que se solicita, algo que se entiende como correcto ya que no se necesita todo el tiempo la instancia.

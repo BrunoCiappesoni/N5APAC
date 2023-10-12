@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IStudentsRepository<Student>, StudentsRepository<Student>>();
-
+builder.Services.AddScoped<IStudentLogic, StudentLogic>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
